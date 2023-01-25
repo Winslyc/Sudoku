@@ -10,7 +10,7 @@ public class SudokuUtiltities {
             }
         }
     }
-    public static void copyToNewArray(int[][] oldArray){
+    public static int[][] copyToNewArray(int[][] oldArray){
         int[][] newArray = new int[SudokuGame.GRID_BOUNDARY][SudokuGame.GRID_BOUNDARY];
         for(int xIndex = 0; xIndex < SudokuGame.GRID_BOUNDARY; xIndex++){
             for(int yIndex = 0; yIndex < SudokuGame.GRID_BOUNDARY; yIndex++){
@@ -18,5 +18,6 @@ public class SudokuUtiltities {
 
             }
         }
+        return newArray;
     }
 }

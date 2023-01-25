@@ -203,9 +203,10 @@ index++;
                     if (value.equals("")) {
                         tile.setStyle("-fx-opacity: 1;");
                         tile.setDisable(false);
-                    } else {
-                        tile.setStyle("-fx-opacity: 0.8;");
+                    } else if (value.matches("[1-9]")){
+                        tile.setStyle("-fx-opacity: 0.5;");
                         tile.setDisable(true);
+                        tile.setEditable(false);
                     }
                 }
             }

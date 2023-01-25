@@ -47,7 +47,7 @@ public class GameLogic {
         for(int yIndex = 0; yIndex < GRID_BOUNDARY; yIndex++){
             List<Integer> row = new ArrayList<>();
             for(int xIndex = 0; xIndex <GRID_BOUNDARY; xIndex++){
-                row.add(grid[xIndex][xIndex]);
+                row.add(grid[xIndex][yIndex]);
             }
             if(collectionHasRepeats(row)) return  true;
         }
@@ -97,6 +97,7 @@ public class GameLogic {
                         xIndex ++;
                     }
                     xIndex-=3;
+
                     yIndex++;
                 }
                 if(collectionHasRepeats(square)) return true;
