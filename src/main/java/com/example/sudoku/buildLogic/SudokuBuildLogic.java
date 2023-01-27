@@ -14,6 +14,7 @@ public class SudokuBuildLogic {
         SudokuGame initialState;
         IStorage storage = new LocalStorageImpl();
         try{
+            storage.createGameDirectory();
             initialState = storage.getGameData();
         }catch (IOException e){
             initialState = GameLogic.getNewGame();

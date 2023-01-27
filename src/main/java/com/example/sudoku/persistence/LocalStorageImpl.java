@@ -1,18 +1,27 @@
 package com.example.sudoku.persistence;
 
+import com.example.sudoku.SudokuApplication;
 import com.example.sudoku.problemDomain.IStorage;
 import com.example.sudoku.problemDomain.SudokuGame;
 
 import java.io.*;
 
 public class LocalStorageImpl implements IStorage {
-    private static File GAME_DATA = new File(
-            System.getProperty("user.home"),
-            "gamedata.txt"
-    );
+    File directory = new File(System.getProperty("user.home") + "/Sudoku");
+
+
+    private static File GAME_DATA;
+    //Creates Game Directory and initializes gameData for the game.
+    public void createGameDirectory(){
+        if(!directory.exists()){
+            directory.mkdir();
+        }
+       GAME_DATA = new File(
+                System.getProperty("user.home")  + "/Sudoku",
+                "gamedata.txt");
+    }
     @Override
     public void updateGameData(SudokuGame game) throws IOException {
-
         try{
             FileOutputStream fileOutputStream = new FileOutputStream(GAME_DATA);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -25,6 +34,8 @@ public class LocalStorageImpl implements IStorage {
 
     @Override
     public SudokuGame getGameData() throws IOException {
+
+
         FileInputStream fileInputStream = new FileInputStream(GAME_DATA);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         try{
